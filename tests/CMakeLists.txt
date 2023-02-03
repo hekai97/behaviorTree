@@ -1,6 +1,5 @@
 set(BT_TEST_SOURCES
-    gtest_behaviorTree.cpp
-    gtest_t2.cpp
+    GTest_BehaviorTree.cpp
 )
 if(BT_UNIT_TESTS)
     message(STATUS "Building unit tests in tests directory")

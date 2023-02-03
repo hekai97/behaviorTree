@@ -11,14 +11,10 @@ option(BT_UNIT_TESTS "Build the unit tests" ON)
 # 设置源文件目录
 aux_source_directory(${PROJECT_SOURCE_DIR}/src SRC_LIST)
 
-add_library(behaviorTree ${SRC_LIST})
 
 set(BEHAVIOR_TREE_LIBRARY ${PROJECT_NAME})
 
-# 设置include目录
-# target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
-target_include_directories(${BEHAVIOR_TREE_LIBRARY} PUBLIC ${PROJECT_SOURCE_DIR}/include)
-
+add_library(behaviorTree ${SRC_LIST})
 if(BT_UNIT_TESTS)
     message(STATUS "Building unit tests")
     enable_testing()
@@ -33,5 +29,11 @@ if(BT_UNIT_TESTS)
     add_subdirectory(tests)
 endif()
 
+# 设置include目录
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
+# target_include_directories(${BEHAVIOR_TREE_LIBRARY} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+
+# 设置包含目录
 target_include_directories(${BEHAVIOR_TREE_LIBRARY} PUBLIC
                            "${PROJECT_BINARY_DIR}")
