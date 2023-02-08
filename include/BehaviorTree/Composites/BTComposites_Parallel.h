@@ -1,4 +1,4 @@
-#include "BTCompositesNode.h"
+#include "BehaviorTree/BTCompositesNode.h"
 
 class BTComposites_Parallel : public BTCompositesNode
 {
