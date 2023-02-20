@@ -7,7 +7,7 @@ if(BT_UNIT_TESTS)
     add_executable(${BEHAVIOR_TREE_LIBRARY}_test ${BT_TEST_SOURCES})
     target_link_libraries(${PROJECT_NAME}_test
         ${BEHAVIOR_TREE_LIBRARY} gtest gtest_main)
-
+    
     target_include_directories(${BEHAVIOR_TREE_LIBRARY}_test PRIVATE gtest/include ${GTEST_INCLUDE_DIRS})
 
     # add_custom_command(TARGET ${BEHAVIOR_TREE_LIBRARY}_test POST_BUILD

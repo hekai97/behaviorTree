@@ -30,7 +30,8 @@ if(BT_UNIT_TESTS)
 endif()
 
 # 设置include目录
-target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
+# target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(${BEHAVIOR_TREE_LIBRARY} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 # target_include_directories(${BEHAVIOR_TREE_LIBRARY} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 
