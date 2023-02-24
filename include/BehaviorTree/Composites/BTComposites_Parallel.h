@@ -1,3 +1,4 @@
+#pragma once
 #include <thread>
 #include "BehaviorTree/BTCompositesNode.h"
 
@@ -8,13 +9,15 @@ namespace BT
     private:
         /* data */
     public:
-        BTComposites_Parallel(/* args */);
+        BTComposites_Parallel(/* args */) : BTComposites_Parallel("BTComposites_Parallel"){};
+        BTComposites_Parallel(std::string name);
         ~BTComposites_Parallel();
         NodeResult::BTResult ExecuteTask() override;
     };
 
-    BTComposites_Parallel::BTComposites_Parallel(/* args */)
+    BTComposites_Parallel::BTComposites_Parallel(std::string name)
     {
+        this->bt_name = name;
     }
 
     BTComposites_Parallel::~BTComposites_Parallel()

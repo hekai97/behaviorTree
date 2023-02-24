@@ -1,3 +1,4 @@
+#pragma once
 #include "BehaviorTree/BTCompositesNode.h"
 namespace BT
 {
@@ -6,13 +7,15 @@ namespace BT
     private:
         /* data */
     public:
-        BTComposites_Sequence(/* args */);
+        BTComposites_Sequence(/* args */) : BTComposites_Sequence("BTComposites_Sequence"){};
+        BTComposites_Sequence(std::string name);
         ~BTComposites_Sequence();
         NodeResult::BTResult ExecuteTask() override;
     };
 
-    BTComposites_Sequence::BTComposites_Sequence(/* args */)
+    BTComposites_Sequence::BTComposites_Sequence(std::string name)
     {
+        this->bt_name = name;
     }
 
     BTComposites_Sequence::~BTComposites_Sequence()

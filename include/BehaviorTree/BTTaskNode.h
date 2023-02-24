@@ -7,14 +7,16 @@ namespace BT
     private:
         /* data */
     public:
-        BTTaskNode(/* args */);
+        BTTaskNode(/* args */) : BTTaskNode("BTTaskNode"){};
+        BTTaskNode(std::string name);
         ~BTTaskNode();
         NodeResult::BTResult ExecuteTask() override;
         BTNodeType getType() const override final;
     };
 
-    BTTaskNode::BTTaskNode(/* args */)
+    BTTaskNode::BTTaskNode(std::string name)
     {
+        this->bt_name = name;
     }
 
     BTTaskNode::~BTTaskNode()
