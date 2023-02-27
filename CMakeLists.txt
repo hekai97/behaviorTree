@@ -9,12 +9,26 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(BT_UNIT_TESTS "Build the unit tests" ON)
 
 # 设置源文件目录
-aux_source_directory(${PROJECT_SOURCE_DIR}/src SRC_LIST)
+# aux_source_directory(${PROJECT_SOURCE_DIR}/src SRC_LIST)
+
+list(APPEND SRC_LIST
+src/BehaviorTree.cpp
+src/BTCompositesNode.cpp
+src/BTNode.cpp
+src/BTTaskNode.cpp
+
+src/Composites/BTComposites_Parallel.cpp
+src/Composites/BTComposites_Selector.cpp
+src/Composites/BTComposites_Sequence.cpp
+
+# src/Blackboard/BlackBoard.cpp
+)
 
 
 set(BEHAVIOR_TREE_LIBRARY ${PROJECT_NAME})
 
-add_library(behaviorTree ${SRC_LIST})
+add_library(${BEHAVIOR_TREE_LIBRARY} SHARED ${SRC_LIST})
+
 if(BT_UNIT_TESTS)
     message(STATUS "Building unit tests")
     enable_testing()

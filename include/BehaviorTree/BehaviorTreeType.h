@@ -1,3 +1,4 @@
+#pragma once
 namespace NodeResult
 {
     enum class BTResult

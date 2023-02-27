@@ -11,6 +11,7 @@ TEST(BehaviorTree, Blackboard)
     BlackBoard blackboard;
     blackboard.setValue("test", 1);
     EXPECT_EQ(blackboard.getValue<int>("test"), 1);
+    EXPECT_EQ(blackboard.getValue<int>("test2"), 0);
 }
 
 TEST(BehaviorTree, parallel)
@@ -75,9 +76,9 @@ TEST(BehaviorTree,dynamic)
 TEST(BehaviorTree,parallelTask)
 {
     BT::BTComposites_Parallel parallel;
-    std::shared_ptr<BT::BTTaskNode> taskNode = std::make_shared<TestTask>();
+    TestTask *taskNode = new TestTask();
     parallel.AddChild(taskNode);
-    std::shared_ptr<BT::BTTaskNode> taskNode2 = std::make_shared<TestTask2>();
+    TestTask2 *taskNode2 = new TestTask2();
     parallel.AddChild(taskNode2);
     // parallel.ExecuteTask();
     EXPECT_EQ(parallel.getType(), BT::BTNodeType::COMPOSITE);
@@ -90,8 +91,8 @@ TEST(BehaviorTree,BTTree)
     BT::BTComposites_Parallel *rootNode = new BT::BTComposites_Parallel();
     TestTask *taskNode = new TestTask();
     TestTask2 *taskNode2 = new TestTask2();
-    rootNode->AddChild(std::shared_ptr<BT::BTTaskNode>(taskNode));
-    rootNode->AddChild(std::shared_ptr<BT::BTTaskNode>(taskNode2));
+    rootNode->AddChild(taskNode);
+    rootNode->AddChild(taskNode2);
     tree->SetRootNode(rootNode);
     EXPECT_EQ(tree->runBehaviorTree(), NodeResult::BTResult::SUCCESS);
 }
@@ -110,8 +111,9 @@ TEST(BehaviorTree,Complete)
     taskNode->setName("task1");
     TestTask2 *taskNode2 = new TestTask2();
     taskNode2->setName("task2");
-    rootNode->AddChild(std::shared_ptr<BT::BTTaskNode>(taskNode));
-    rootNode->AddChild(std::shared_ptr<BT::BTTaskNode>(taskNode2));
+    rootNode->AddChild(taskNode);
+    rootNode->AddChild(taskNode2);
     tree->SetRootNode(rootNode);
     EXPECT_EQ(tree->runBehaviorTree(), NodeResult::BTResult::SUCCESS);
 }
+

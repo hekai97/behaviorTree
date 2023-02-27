@@ -15,35 +15,8 @@ namespace BT
         BTCompositesNode(/* args */);
         ~BTCompositesNode();
         BTNodeType getType() const override final;
-        void AddChild(std::shared_ptr<BTNode> child);
+        virtual void AddChild(BTNode* child);
         std::vector<std::shared_ptr<BTNode>> GetChildren() const;
         virtual NodeResult::BTResult ExecuteTask() override;
     };
-
-    BTCompositesNode::BTCompositesNode(/* args */)
-    {
-    }
-
-    BTCompositesNode::~BTCompositesNode()
-    {
-    }
-
-    BTNodeType BTCompositesNode::getType() const
-    {
-        return BTNodeType::COMPOSITE;
-    }
-
-    inline void BTCompositesNode::AddChild(std::shared_ptr<BTNode> child)
-    {
-        m_children.push_back(child);
-    }
-
-    inline std::vector<std::shared_ptr<BTNode>> BTCompositesNode::GetChildren() const
-    {
-        return m_children;
-    }
-    inline NodeResult::BTResult BTCompositesNode::ExecuteTask()
-    {
-        return NodeResult::BTResult();
-    }
 } // namespace BT

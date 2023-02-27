@@ -12,33 +12,13 @@ namespace BT
     protected:
         std::string bt_name;
     public:
-        BTNode(/* args */) : BTNode("BTNode"){};
+        BTNode(/* args */);
         BTNode(std::string name);
         ~BTNode();
         virtual BTNodeType getType() const = 0;
         virtual NodeResult::BTResult ExecuteTask() = 0;
-        void setName(std::string name);
-        std::string getName() const;
+        virtual void setName(std::string name);
+        virtual std::string getName() const;
     };
-
-    BTNode::BTNode(std::string name)
-    {
-        bt_name = name;
-    }
-
-    BTNode::~BTNode()
-    {
-    }
-
-    inline void BTNode::setName(std::string name)
-    {
-        bt_name = name;
-    }
-
-    inline std::string BTNode::getName() const
-    {
-        return bt_name;
-    }
-
 
 } // namespace BT
