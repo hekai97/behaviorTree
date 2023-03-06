@@ -21,6 +21,9 @@ src/Composites/BTComposites_Parallel.cpp
 src/Composites/BTComposites_Selector.cpp
 src/Composites/BTComposites_Sequence.cpp
 
+src/Tasks/AlwaysSuccess.cpp
+src/Tasks/AlwaysFailure.cpp
+src/Tasks/Wait.cpp
 # src/Blackboard/BlackBoard.cpp
 )
 

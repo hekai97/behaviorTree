@@ -15,6 +15,5 @@ namespace BT
         COMPOSITE,
         DECORATOR,
         ACTION,
-        CONDITION
     };
 } // namespace BT

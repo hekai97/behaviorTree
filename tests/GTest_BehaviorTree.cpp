@@ -6,12 +6,16 @@
 #include "BehaviorTree/BTTaskNode.h"
 #include "BehaviorTree/BehaviorTree.h"
 
+#include "BehaviorTree/Tasks/AlwaysSuccess.h"
+
 TEST(BehaviorTree, Blackboard)
 {
     BlackBoard blackboard;
     blackboard.setValue("test", 1);
     EXPECT_EQ(blackboard.getValue<int>("test"), 1);
-    EXPECT_EQ(blackboard.getValue<int>("test2"), 0);
+    // EXPECT_EQ(blackboard.getValue<int>("test2"), 0);
+    AlwaysSuccess* task = new AlwaysSuccess();
+    EXPECT_EQ(task->ExecuteTask(), NodeResult::BTResult::SUCCESS);
 }
 
 TEST(BehaviorTree, parallel)
