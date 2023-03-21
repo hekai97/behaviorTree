@@ -1,7 +1,7 @@
 #include "BehaviorTree/BehaviorTree.h"
 namespace BT
 {
-        BehaviorTree::BehaviorTree(/* args */)
+    BehaviorTree::BehaviorTree(/* args */)
     {
     }
 
@@ -9,6 +9,10 @@ namespace BT
     {
     }
 
+    void BehaviorTree::SetBlackBoard(BlackBoard *blackBoard)
+    {
+        this->blackBoard = std::shared_ptr<BlackBoard>(blackBoard);
+    }
     BehaviorTree::NodePtr BehaviorTree::GetRootNode()
     {
         return rootNode;
@@ -19,7 +23,7 @@ namespace BT
         rootNode = std::shared_ptr<BTCompositesNode>(node);
     }
 
-    BlackBoard BehaviorTree::GetBlackBoard() const
+    BehaviorTree::BlackBoardPtr BehaviorTree::GetBlackBoard() const
     {
         return blackBoard;
     }

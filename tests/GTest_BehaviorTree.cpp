@@ -7,6 +7,7 @@
 #include "BehaviorTree/BehaviorTree.h"
 
 #include "BehaviorTree/Tasks/AlwaysSuccess.h"
+#include "BehaviorTree/Tasks/Log.h"
 
 TEST(BehaviorTree, Blackboard)
 {
@@ -115,6 +116,18 @@ TEST(BehaviorTree,Complete)
     taskNode->setName("task1");
     TestTask2 *taskNode2 = new TestTask2();
     taskNode2->setName("task2");
+    rootNode->AddChild(taskNode);
+    rootNode->AddChild(taskNode2);
+    tree->SetRootNode(rootNode);
+    EXPECT_EQ(tree->runBehaviorTree(), NodeResult::BTResult::SUCCESS);
+}
+
+TEST(BehaviorTree,Log)
+{
+    BT::BehaviorTree *tree = new BT::BehaviorTree();
+    BT::BTComposites_Sequence *rootNode = new BT::BTComposites_Sequence();
+    Log *taskNode = new Log();
+    AlwaysSuccess *taskNode2 = new AlwaysSuccess();
     rootNode->AddChild(taskNode);
     rootNode->AddChild(taskNode2);
     tree->SetRootNode(rootNode);

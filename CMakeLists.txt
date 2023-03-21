@@ -24,6 +24,7 @@ src/Composites/BTComposites_Sequence.cpp
 src/Tasks/AlwaysSuccess.cpp
 src/Tasks/AlwaysFailure.cpp
 src/Tasks/Wait.cpp
+src/Tasks/Log.cpp
 # src/Blackboard/BlackBoard.cpp
 )
 

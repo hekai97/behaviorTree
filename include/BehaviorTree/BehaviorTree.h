@@ -6,20 +6,21 @@
 
 namespace BT
 {
-    class BlackBoardData;
     class BehaviorTree
     {
         using NodePtr = std::shared_ptr<BTCompositesNode>;
+        using BlackBoardPtr = std::shared_ptr<BlackBoard>;
     private:
         // 根节点
         NodePtr rootNode;
         // 黑板
-        BlackBoard blackBoard;
+        BlackBoardPtr blackBoard;
     public:
         BehaviorTree(/* args */);
         ~BehaviorTree();
+        void SetBlackBoard(BlackBoard* blackBoard);
+        BlackBoardPtr GetBlackBoard() const;
         NodePtr GetRootNode();
-        BlackBoard GetBlackBoard() const;
         void SetRootNode(BTCompositesNode* node);
         NodeResult::BTResult runBehaviorTree();
     };
